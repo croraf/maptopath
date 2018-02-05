@@ -10,13 +10,15 @@ import { MapTextArea } from './MapTextArea';
 }; */
 
 import {calculatePath} from '../../modules/calculatePath';
+import { example1 } from './mapExamples';
+
 
 class Home extends React.Component {
 
     constructor () {
         super();
         this.state = {
-            value: 'asd',
+            value: example1,
             path: ''
         };
 
@@ -35,7 +37,7 @@ class Home extends React.Component {
 
                 {/* <NavLink to='/game' activeStyle={activeStyle} style={{position: 'absolute', bottom: '5px', left: '5px'}}>Game</NavLink> */}
                 
-                <h1 style={{textAlign: 'center'}}>Calculate from Map</h1>
+                <h1 style={{textAlign: 'center'}}>Map to path</h1>
 
                 <h3 style={{textAlign: 'center'}}>Input map: </h3>
                 <MapTextArea value={this.state.value} handleChange={this.handleChange}/>
