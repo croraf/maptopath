@@ -26,7 +26,7 @@ class OutputComponent extends React.Component {
                         }}
                         className='outputScrollbar'    
                     >
-                        {this.props.path}
+                        {this.props.solution}
                     </Scrollbars>
                 </div>
             </div>

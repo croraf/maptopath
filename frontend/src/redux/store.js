@@ -4,7 +4,7 @@ import { createStore } from 'redux'
 
 import { combineReducers, applyMiddleware, compose } from 'redux'
 
-import { exampleReducer } from './reducers';
+import { solutionReducer } from './reducers';
 import { routerReducer, routerMiddleware, push } from 'react-router-redux';
 
 
@@ -16,7 +16,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 
 const reducer = combineReducers({
-    example: exampleReducer,
+    solution: solutionReducer,
     router: routerReducer
 });
 

@@ -1,11 +1,13 @@
 
-const exampleReducer = (state = {}, action) => {
+const solutionReducer = (state = {location: [], currentPath: ''}, action) => {
     switch (action.type) {
-        case 'a':
-            return state;
+        case 'clearSolution':
+            return {location: [], currentPath: ''};
+        case 'solutionUpdate':
+            return {location: action.solution.location, currentPath: state.currentPath + action.solution.currentChar};
         default:
             return state;
     }
 };
 
-export {exampleReducer};
+export { solutionReducer };

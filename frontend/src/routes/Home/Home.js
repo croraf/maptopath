@@ -1,17 +1,15 @@
 import React from 'react';
 
-import Button from 'material-ui/Button';
-import { MapTextArea } from './MapTextArea';
-
 /*import { NavLink } from 'react-router-dom';
 
  const activeStyle = {
     color: 'red'
 }; */
 
-import {OutputComponent} from './OutputComponent';
-import {calculatePath} from '../../modules/calculatePath';
 import { example1, example2 } from './mapExamples';
+import { MapTextAreaContainer } from './MapTextAreaContainer';
+import { OutputContainer } from './OutputContainer';
+import { CalculateButton } from './CalculateButton';
 
 
 class Home extends React.Component {
@@ -20,7 +18,6 @@ class Home extends React.Component {
         super();
         this.state = {
             value: example1,
-            path: ''
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -41,21 +38,13 @@ class Home extends React.Component {
                 <h1 style={{textAlign: 'center'}}>Map to path</h1>
 
                 <h4 style={{textAlign: 'center'}}>Input map: </h4>
-                <MapTextArea value={this.state.value} handleChange={this.handleChange}/>
+                <MapTextAreaContainer value={this.state.value} handleChange={this.handleChange} />
 
-                <div style={{display: 'flex', flexAlign: 'row', justifyContent: 'center', marginTop: '20px'}}>
-                    <Button 
-                        raised={true}
-                        color="primary" 
-                        onClick={()=>{console.log(this.state.value); this.setState({path: calculatePath(this.state.value)});}}
-                    >
-                        Calculate
-                    </Button>
-                </div>
+                <CalculateButton value={this.state.value} />
 
-                <OutputComponent label='Path found:' path={this.state.path} />
+                <OutputContainer label='Path found:' />
 
-                <OutputComponent label='Collected letters:' path={this.state.path} />
+                <OutputContainer label='Collected letters:' />
                 
             </div>
         );

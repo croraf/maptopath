@@ -1,4 +1,7 @@
 
+import { store } from '../redux/store';
+
+
 const findNextPosition = (currentPath, rows, currentX, currentY, oldDirection) => {
 
     let nextX;
@@ -14,8 +17,9 @@ const findNextPosition = (currentPath, rows, currentX, currentY, oldDirection) =
     console.log('current direction: ', oldDirection);
 
     const currentChar = rows[currentY].charAt(currentX);
+    store.dispatch({type: 'solutionUpdate', solution: {location: [currentX, currentY], currentChar}});
 
-    if (currentChar === 'x') {return currentPath + currentChar;}
+    if (currentChar === 'x') {return;}
 
     // only if current char is | or - we keep the previous direction
     // if current char is @ + or letter then the direction can change
@@ -65,10 +69,17 @@ const findNextPosition = (currentPath, rows, currentX, currentY, oldDirection) =
         }
     }
 
-    return findNextPosition(currentPath + rows[currentY].charAt(currentX), rows, nextX, nextY, newDirection);
+    setTimeout(
+        () => {
+            findNextPosition(currentPath + rows[currentY].charAt(currentX), rows, nextX, nextY, newDirection);
+        },
+        200
+    );
 };
 
 const calculatePath = (value) => {
+
+    store.dispatch({type: 'clearSolution'});
 
     const rows = value.split(/\r?\n/);
 
