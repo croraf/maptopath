@@ -1,64 +1,72 @@
 
-const findNextPosition = (currentPath, rows, currentX, currentY, direction) => {
+const findNextPosition = (currentPath, rows, currentX, currentY, oldDirection) => {
 
     let nextX;
     let nextY;
     let newDirection;
 
+    //debugger;
+
     console.log('current position: ', currentX, currentY);
 
-    //direction = 'rafa';
+    console.log('current path:', currentPath);
 
-    console.log('current direction: ', direction);
+    console.log('current direction: ', oldDirection);
 
     const currentChar = rows[currentY].charAt(currentX);
 
+    if (currentChar === 'x') {return currentPath + currentChar;}
+
     // only if current char is | or - we keep the previous direction
     // if current char is @ + or letter then the direction can change
-    if (currentX !== '|' && currentChar === '-') {
+    if (currentChar !== '|' && currentChar !== '-') {
         newDirection = 'any';
     } else {
-        newDirection = direction;
+        newDirection = oldDirection;
     }
 
-    if ((direction === 'any' || direction === 'right') && currentX < rows[currentY].length - 1) {
-        // check right
+    if ((newDirection === 'any' || newDirection === 'right') && oldDirection !== 'left' && currentX < rows[currentY].length - 1) {
+        // right
         const rightChar = rows[currentY].charAt(currentX + 1);
         if (rightChar !== ' ') {
             nextX = currentX + 1;
             nextY = currentY;
+            newDirection = 'right';
         }
     }
 
-    if ((direction === 'any' || direction === 'left') && currentX > 0) {
-        // check left
+    if ((newDirection === 'any' || newDirection === 'left') && oldDirection !== 'right' && currentX > 0) {
+        // left
         const leftChar = rows[currentY].charAt(currentX - 1);
-        if (leftChar === '-' || leftChar === '+') {
+        if (leftChar !== ' ') {
             nextX = currentX - 1;
             nextY = currentY;
+            newDirection = 'left';
         }
     }
 
-    if (currentY < rows.length - 1) {
-        // check bottom
+    if ((newDirection === 'any' || newDirection === 'bottom') && oldDirection !== 'top' && currentY < rows.length - 1) {
+        // bottom
         const bottomChar = rows[currentY + 1].charAt(currentX);
-        if (bottomChar === '|' || bottomChar === '+') {
+        if (bottomChar !== ' ') {
             nextX = currentX;
             nextY = currentY + 1;
+            newDirection = 'bottom';
         }
     }
 
-    if (currentY > 0) {
+    if ((newDirection === 'any' || newDirection === 'top') && oldDirection !== 'bottom' && currentY > 0) {
         // check top
         const topChar = rows[currentY - 1].charAt(currentX);
-        if (topChar === '|' || topChar === '+') {
+        if (topChar !== ' ') {
             nextX = currentX;
             nextY = currentY - 1;
+            newDirection = 'top';
         }
     }
 
-    return currentPath + ' ' + currentX + ' ' + currentY;
-}
+    return findNextPosition(currentPath + rows[currentY].charAt(currentX), rows, nextX, nextY, newDirection);
+};
 
 const calculatePath = (value) => {
 
@@ -81,7 +89,7 @@ const calculatePath = (value) => {
 
     if (typeof currentX != 'undefined' && typeof currentY != 'undefined') {
 
-        calculatedPath = findNextPosition('@', rows, currentX, currentY, 'any');
+        calculatedPath = findNextPosition('', rows, currentX, currentY, 'any');
     } else {
         calculatedPath = 'No initial position given';
     }

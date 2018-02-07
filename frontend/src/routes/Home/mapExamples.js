@@ -1,11 +1,11 @@
 
 const example1 = 
-`   
-   @
-+a |
+`   @
++x |
 |  a
 |  |
 +-a+`;
 
+const example2 = `a              b              c`;
 
-export {example1};
+export {example1, example2};

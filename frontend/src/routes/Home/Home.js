@@ -9,8 +9,9 @@ import { MapTextArea } from './MapTextArea';
     color: 'red'
 }; */
 
+import {OutputComponent} from './OutputComponent';
 import {calculatePath} from '../../modules/calculatePath';
-import { example1 } from './mapExamples';
+import { example1, example2 } from './mapExamples';
 
 
 class Home extends React.Component {
@@ -26,44 +27,36 @@ class Home extends React.Component {
     }
 
     handleChange (event) {
+
         this.setState({
             value: event.target.value
         });
     }
     
     render() {
+        
         return (
             <div style={{position: 'relative'}}>
 
-                {/* <NavLink to='/game' activeStyle={activeStyle} style={{position: 'absolute', bottom: '5px', left: '5px'}}>Game</NavLink> */}
-                
                 <h1 style={{textAlign: 'center'}}>Map to path</h1>
 
                 <h3 style={{textAlign: 'center'}}>Input map: </h3>
                 <MapTextArea value={this.state.value} handleChange={this.handleChange}/>
 
-                <div style={{display: 'flex', flexAlign: 'row', justifyContent: 'center'}}>
-                    <Button raised color="primary" 
-                        onClick={()=>{this.setState({path: calculatePath(this.state.value)});}}
+                <div style={{display: 'flex', flexAlign: 'row', justifyContent: 'center', marginTop: '20px'}}>
+                    <Button 
+                        raised={true}
+                        color="primary" 
+                        onClick={()=>{console.log(this.state.value); this.setState({path: calculatePath(this.state.value)});}}
                     >
                         Calculate
                     </Button>
                 </div>
 
-                <div style={{display: 'flex', flexAlign: 'row', justifyContent: 'center', width: '100%', height: '40px', margin: '10px'}}>
-                    <div style={{
-                        width: '80%',
-                        height: '100%',
-                        backgroundColor: 'white',
-                        border: '1px solid black',
-                        borderRadius: '10px',
-                        textAlign: 'center',
-                        paddingTop: '10px',
-                        fontSize: '20px'
-                    }}>
-                        {this.state.path}
-                    </div>
-                </div>
+                <OutputComponent label='Found path:' path={this.state.path} />
+
+                <OutputComponent label='Collected letters:' path={this.state.path} />
+                
             </div>
         );
     }
