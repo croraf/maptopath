@@ -77,11 +77,11 @@ const findNextPosition = (currentPath, rows, currentX, currentY, oldDirection) =
     );
 };
 
-const calculatePath = (value) => {
+const calculatePath = (map) => {
 
     store.dispatch({type: 'clearSolution'});
 
-    const rows = value.split(/\r?\n/);
+    const rows = map.split(/\r?\n/);
 
     let currentX;
     let currentY;

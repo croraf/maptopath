@@ -6,29 +6,12 @@ import React from 'react';
     color: 'red'
 }; */
 
-import { example1, example2 } from './mapExamples';
 import { MapTextAreaContainer } from './MapTextAreaContainer';
 import { OutputContainer } from './OutputContainer';
-import { CalculateButton } from './CalculateButton';
+import { CalculateButtonContainer } from './CalculateButtonContainer';
 
 
 class Home extends React.Component {
-
-    constructor () {
-        super();
-        this.state = {
-            value: example1,
-        };
-
-        this.handleChange = this.handleChange.bind(this);
-    }
-
-    handleChange (event) {
-
-        this.setState({
-            value: event.target.value
-        });
-    }
     
     render() {
         
@@ -38,9 +21,9 @@ class Home extends React.Component {
                 <h1 style={{textAlign: 'center'}}>Map to path</h1>
 
                 <h4 style={{textAlign: 'center'}}>Input map: </h4>
-                <MapTextAreaContainer value={this.state.value} handleChange={this.handleChange} />
+                <MapTextAreaContainer />
 
-                <CalculateButton value={this.state.value} />
+                <CalculateButtonContainer />
 
                 <OutputContainer label='Path found:' />
 

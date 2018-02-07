@@ -1,8 +1,12 @@
 
+import { example1 } from './mapExamples';
+
 const solutionReducer = (state = {location: [], currentPath: ''}, action) => {
     switch (action.type) {
         case 'clearSolution':
             return {location: [], currentPath: ''};
+        case 'clearLocation':
+            return {location: [], currentPath: state.currentPath};
         case 'solutionUpdate':
             return {location: action.solution.location, currentPath: state.currentPath + action.solution.currentChar};
         default:
@@ -10,4 +14,13 @@ const solutionReducer = (state = {location: [], currentPath: ''}, action) => {
     }
 };
 
-export { solutionReducer };
+const mapReducer = (state = example1, action) => {
+    switch (action.type) {
+        case 'updateMap':
+            return action.map;
+        default:
+            return state;
+    }
+}
+
+export { solutionReducer, mapReducer };

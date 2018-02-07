@@ -4,10 +4,17 @@ import {MapTextArea} from './MapTextArea';
 
 const mapStateToProps = (state) => {
     return ({
-        locationOnMap: state.solution.location
+        locationOnMap: state.solution.location,
+        map: state.map
     });
 };
 
-const MapTextAreaContainer = connect(mapStateToProps)(MapTextArea);
+const mapDispatchToProps = (dispatch) => {
+    return ({
+        handleChange: (event) => {dispatch({type: 'updateMap', map: event.target.value});}
+    });
+};
+
+const MapTextAreaContainer = connect(mapStateToProps, mapDispatchToProps)(MapTextArea);
 
 export {MapTextAreaContainer};

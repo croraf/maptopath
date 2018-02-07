@@ -10,7 +10,7 @@ class CalculateButton extends React.Component {
                 <Button 
                     raised={true}
                     color="primary" 
-                    onClick={()=>{calculatePath(this.props.value);}}
+                    onClick={()=>{calculatePath(this.props.map);}}
                 >
                     Calculate
                 </Button>
@@ -18,5 +18,7 @@ class CalculateButton extends React.Component {
         );
     }
 }
+
+
 
 export {CalculateButton};

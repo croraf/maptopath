@@ -1,10 +1,10 @@
 
-import { createStore } from 'redux'
+import { createStore } from 'redux';
 
 
 import { combineReducers, applyMiddleware, compose } from 'redux'
 
-import { solutionReducer } from './reducers';
+import { solutionReducer, mapReducer } from './reducers';
 import { routerReducer, routerMiddleware, push } from 'react-router-redux';
 
 
@@ -17,6 +17,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const reducer = combineReducers({
     solution: solutionReducer,
+    map: mapReducer,
     router: routerReducer
 });
 
