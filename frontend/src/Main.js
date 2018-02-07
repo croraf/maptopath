@@ -11,7 +11,17 @@ class Main extends React.Component {
     render() {
 
         return (
-            <Paper elevation={4} style={{position: 'absolute', bottom: '5px', top: '5px', left: '5px', right: '5px', minWidth: '800px' }}>
+            <Paper elevation={4} 
+                style={{
+                    position: 'absolute',
+                    bottom: '0%',
+                    top: '0%',
+                    left: '0%',
+                    right: '0%',
+                    minWidth: '800px',
+                    overflowY: 'auto',
+                    overflowX: 'hidden'
+                }}>
                 <Route exact path="/" component={Home} />
             </Paper>
         );

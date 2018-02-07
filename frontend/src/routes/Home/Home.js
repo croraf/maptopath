@@ -40,7 +40,7 @@ class Home extends React.Component {
 
                 <h1 style={{textAlign: 'center'}}>Map to path</h1>
 
-                <h3 style={{textAlign: 'center'}}>Input map: </h3>
+                <h4 style={{textAlign: 'center'}}>Input map: </h4>
                 <MapTextArea value={this.state.value} handleChange={this.handleChange}/>
 
                 <div style={{display: 'flex', flexAlign: 'row', justifyContent: 'center', marginTop: '20px'}}>
@@ -53,7 +53,7 @@ class Home extends React.Component {
                     </Button>
                 </div>
 
-                <OutputComponent label='Found path:' path={this.state.path} />
+                <OutputComponent label='Path found:' path={this.state.path} />
 
                 <OutputComponent label='Collected letters:' path={this.state.path} />
                 
