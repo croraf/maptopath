@@ -18,6 +18,6 @@ Required: node v8.9.1 or greater, npm v5.5.1 or greater.
 
 # TODO (issues)
 
-- scrolling interferes with calculation thread
-- maybe stop solving if path is ambiguous (easy fix)
-- current position highlight is not aligned with map when map is scrolled
+    1. Scrolling interferes with calculation thread
+    2. Maybe stop solving if path is ambiguous (easy fix)
+    3. Current position highlight is not aligned with map when map is scrolled
