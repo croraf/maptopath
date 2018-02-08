@@ -15,7 +15,7 @@ const theme = createMuiTheme({
     palette: {
         //type: 'light', // Switching the dark mode on is a single property value change.
         background: {
-            paper: 'whitesmoke',
+            paper: '#eeeef4',
             appBar: '#f00'
         },
         text: {

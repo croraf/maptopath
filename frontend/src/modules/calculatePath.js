@@ -8,7 +8,7 @@ const calculateAllowedDirectionFromState = (incomingDirection, currentChar) => {
     let top = true; 
     let bottom = true;
 
-    console.log('Incoming direction:', incomingDirection);
+    // console.log('Incoming direction:', incomingDirection);
 
     if (currentChar === '|' || currentChar === '-' ) {
         // if it is | or - then all other directions but incoming are denyed
@@ -42,7 +42,7 @@ const findNextPosition = (rows, currentX, currentY, incomingDirection) => {
     
     const currentChar = rows[currentY].charAt(currentX);
 
-    console.log('Current char:', currentChar);
+    // console.log('Current char:', currentChar);
     
     // Dispatch path update
     store.dispatch({

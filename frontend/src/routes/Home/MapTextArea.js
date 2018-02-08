@@ -2,7 +2,7 @@ import React from 'react';
 
 const makeTextHighlight = (x, y) => {
 
-    console.log(x, y);
+    // console.log(x, y);
 
     let brArray = [];
     while (y > 0) {
