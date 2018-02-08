@@ -24,12 +24,12 @@ class OutputComponent extends React.Component {
                             height: '100%',
                             backgroundColor: 'white',
                             border: '1px solid black',
-                            borderRadius: '10px',
+                            borderRadius: '5px',
                             fontSize: '20px',
                             fontFamily: 'monospace',
-                            overflowX: 'hidden',
                             paddingTop: '5px',
-                            textAlign: 'center'
+                            textAlign: 'center',
+                            whiteSpace: 'nowrap'
                         }}
                         className='outputScrollbar'    
                     >
