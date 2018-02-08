@@ -12,7 +12,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return ({
-        handleChange: (event) => {dispatch({type: 'updateMap', map: event.target.value});}
+        handleChange: (event) => {
+            dispatch({type: 'clearLocation'});
+            dispatch({type: 'updateMap', map: event.target.value});
+        }
     });
 };
 
