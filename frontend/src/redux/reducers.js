@@ -16,6 +16,18 @@ const solutionReducer = (state = {location: [], currentPath: ''}, action) => {
     }
 };
 
+const solvingStateReducer = (state = 'idle', action) => {
+
+    switch (action.type) {
+        case 'solvingStarted':
+            return 'solving';
+        case 'solvingStopped':
+            return 'idle';
+        default:
+            return state;
+    }
+};
+
 const mapReducer = (state = example4, action) => {
     switch (action.type) {
         case 'updateMap':
@@ -25,4 +37,4 @@ const mapReducer = (state = example4, action) => {
     }
 }
 
-export { solutionReducer, mapReducer };
+export { solutionReducer, solvingStateReducer, mapReducer };

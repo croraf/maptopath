@@ -30,7 +30,7 @@ const makeTextHighlight = (x, y) => {
 class MapTextArea extends React.Component {
     render() {
 
-        const {handleChange, map, locationOnMap} = this.props;
+        const {handleChange, map, locationOnMap, solvingState} = this.props;
 
         const textHighlight = locationOnMap.length > 0 ? makeTextHighlight(locationOnMap[0], locationOnMap[1]) : <div />;
 
@@ -49,6 +49,7 @@ class MapTextArea extends React.Component {
                     }} 
                     value={map}
                     onChange={handleChange}
+                    readOnly={solvingState === 'solving'}
                 />
                 <div
                     style={{

@@ -5,7 +5,8 @@ import {MapTextArea} from './MapTextArea';
 const mapStateToProps = (state) => {
     return ({
         locationOnMap: state.solution.location,
-        map: state.map
+        map: state.map,
+        solvingState: state.solvingState
     });
 };
 

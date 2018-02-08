@@ -15,3 +15,9 @@ Required: node v8.9.1 or greater, npm v5.5.1 or greater.
     2b. Alternatively you can also run in development mode by running "npm run dev" from 'frontend' folder. 
     Open 'localhost:9002' in browser
 
+
+# TODO (issues)
+
+- scrolling interferes with calculation thread
+- maybe stop solving if path is ambiguous (easy fix)
+- current position highlight is not aligned with map when map is scrolled

@@ -50,7 +50,10 @@ const findNextPosition = (rows, currentX, currentY, incomingDirection) => {
         solution: {location: [currentX, currentY], currentChar}
     });
 
-    if (currentChar === 'x') {return;}
+    if (currentChar === 'x') {
+        store.dispatch({type: 'solvingStopped'});
+        return;
+    }
 
     // allowed from current token and incoming direction
     let allowedDirectionFromState = 
@@ -99,13 +102,15 @@ const findNextPosition = (rows, currentX, currentY, incomingDirection) => {
         }
     }
 
-    // if nextDirection has not been found 
+    // if nextDirection has not been found the path is broken
     if (typeof nextDirection === 'undefined') {
+
         store.dispatch({
             type: 'solutionError',
-            errorMessage: '<Path not continuous>'
+            errorMessage: '<Path broken>'
         });
 
+        store.dispatch({type: 'solvingStopped'});
         return;
     }
 
@@ -113,7 +118,7 @@ const findNextPosition = (rows, currentX, currentY, incomingDirection) => {
         () => {
             findNextPosition(rows, nextX, nextY, nextDirection);
         },
-        200
+        180
     );
 };
 
@@ -144,8 +149,9 @@ const calculatePath = (map) => {
     } else {
         store.dispatch({
             type: 'solutionUpdate',
-            solution: {location: [], currentChar: 'No initial position given'}
+            solution: {location: [], currentChar: '<No initial position given>'}
         });
+        store.dispatch({type: 'solvingStopped'});
     }
 
     return calculatedPath;
