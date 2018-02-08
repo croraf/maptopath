@@ -3,6 +3,13 @@ import { Scrollbars } from 'react-custom-scrollbars';
 
 class OutputComponent extends React.Component {
     render() {
+
+        let {solution} = this.props;
+
+        if (this.props.filterLetters) {
+            solution = solution.replace(/[xX\+\-\|@]/g, '');
+        }
+
         return (
             <div style={{marginTop: '25px'}}>
                 <h4 style={{textAlign: 'center'}}>{this.props.label}</h4>
@@ -26,7 +33,7 @@ class OutputComponent extends React.Component {
                         }}
                         className='outputScrollbar'    
                     >
-                        {this.props.solution}
+                        {solution}
                     </Scrollbars>
                 </div>
             </div>

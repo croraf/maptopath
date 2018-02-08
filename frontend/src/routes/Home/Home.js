@@ -25,9 +25,9 @@ class Home extends React.Component {
 
                 <CalculateButtonContainer />
 
-                <OutputContainer label='Path found:' />
+                <OutputContainer label='Path found:' filterLetters={false}/>
 
-                <OutputContainer label='Collected letters:' />
+                <OutputContainer label='Collected letters:' filterLetters={true}/>
                 
             </div>
         );
