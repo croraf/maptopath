@@ -2,6 +2,8 @@
 
 Small app that converts 2-D map inputted to 1-D path starting at '@' and ending at 'x'.
 
+Deployed at: https://vrafaeli.000webhostapp.com/#/
+
 # How to use
 
 Required: node v8.9.1 or greater, npm v5.5.1 or greater.
